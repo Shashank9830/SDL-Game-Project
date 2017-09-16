@@ -2,7 +2,7 @@
 
 ## About
 
-**SDL-Game-Project** is my personal repository that I use while learning *Game Development* with *SDL 2.0*
+**SDL-Game-Project** is my personal repository that I use while learning *Game Development* with *SDL 2.0*.
 The Code and other source files are part of the development series that I am following from **"SDL Game Development"** book by **Shaun Michelle**
 
 ## SRM-OSC
