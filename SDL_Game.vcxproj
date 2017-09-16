@@ -80,6 +80,7 @@
     <Link>
       <AdditionalLibraryDirectories>C:\SDL2\SDL2_image-devel-2.0.1-VC\SDL2_image-2.0.1\lib\x86;C:\SDL2\SDL2_mixer-devel-2.0.1-VC\SDL2_mixer-2.0.1\lib\x86;C:\SDL2\SDL2-devel-2.0.5-VC\SDL2-2.0.5\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
