@@ -26,5 +26,8 @@ int main(int argc, char* argv[])
 	}
 	g_game->clean();
 
+	//free space
+	delete g_game;
+
 	return 0;
 }
