@@ -10,10 +10,12 @@ class Game
 	SDL_Window *m_pWindow;
 	SDL_Renderer *m_pRenderer;
 	bool m_bRunning;
-public:
-	/*Game();
-	~Game();*/
 
+public:
+
+	Game() { m_bRunning = false; }
+	~Game(){}
+	
 	bool init(const char *title, int xpos, int ypos, int height, int width, bool fullscreen);
 
 	void render();
