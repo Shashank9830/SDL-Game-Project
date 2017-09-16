@@ -2,12 +2,18 @@
 
 #include "Game.h"
 #include <Windows.h>
+#include <iostream>
 
 //our Game Object
 Game *g_game = 0;
 
 int main(int argc, char* argv[])
 {	
+	//my fix for the tip in chapter 1 to use freopen()
+	FILE *stream;
+	AllocConsole();
+	freopen_s(&stream,"CON", "w", stdout);
+
 	g_game = new Game();
 
 	g_game->init("Chapter 1", 100, 100, 640, 580, false);
