@@ -52,6 +52,9 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 
 	//Getting the dimensions of the texture
 	SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
+	//adding new dimensions to the source rectangle
+	m_sourceRectangle.w = 50;
+	m_sourceRectangle.h = 50;
 
 	//Setting co-ordinates x and y and the dimensions of the destiantion rectangle
 	m_destinatinRectangle.x = m_sourceRectangle.x = 0;
