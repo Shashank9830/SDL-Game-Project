@@ -76,8 +76,11 @@ void Game::render()
 {
 	SDL_RenderClear(m_pRenderer); //clear the renderer to the draw color
 
-	//Code to draw the Texture
-	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinatinRectangle);
+	/*Code to draw the Texture
+	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinatinRectangle);*/
+	
+	//Ignoring source and destination rectangle to use entire texture as NULL is passed
+	SDL_RenderCopy(m_pRenderer, m_pTexture, NULL, NULL);
 	
 	SDL_RenderPresent(m_pRenderer);	//draw to the screen
 }
