@@ -44,6 +44,21 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 		return false;	//SDL init fail
 	}
 	std::cout << "init success\n";
+
+	//Loading BMP image on the screen
+	SDL_Surface *pTempSurface = SDL_LoadBMP("assets/rider.bmp");
+	m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
+	SDL_FreeSurface(pTempSurface);
+
+	//Getting the dimensions of the texture
+	SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
+
+	//Setting co-ordinates x and y and the dimensions of the destiantion rectangle
+	m_destinatinRectangle.x = m_sourceRectangle.x = 0;
+	m_destinatinRectangle.y = m_sourceRectangle.y = 0;
+	m_destinatinRectangle.w = m_sourceRectangle.w;
+	m_destinatinRectangle.h = m_sourceRectangle.h;
+
 	m_bRunning = true;	//everything inited successfully, start the main loop
 	return true;
 }
@@ -52,6 +67,9 @@ void Game::render()
 {
 	SDL_RenderClear(m_pRenderer); //clear the renderer to the draw color
 
+	//Code to draw the Texture
+	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinatinRectangle);
+	
 	SDL_RenderPresent(m_pRenderer);	//draw to the screen
 }
 
