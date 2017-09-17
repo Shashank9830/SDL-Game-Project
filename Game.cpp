@@ -45,29 +45,21 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 	}
 	std::cout << "init success\n";
 
-	//Loading BMP image on the screen
-	SDL_Surface *pTempSurface = SDL_LoadBMP("assets/rider.bmp");
+	//Loading sprite sheet
+	SDL_Surface *pTempSurface = SDL_LoadBMP("assets/animate.bmp");
 	m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
 	SDL_FreeSurface(pTempSurface);
 
-	//Getting the dimensions of the texture
-	SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
-	//adding new dimensions to the source rectangle
-	m_sourceRectangle.w = 50;
-	m_sourceRectangle.h = 50;
-
-	//Source and Destination rectangle have same dimensions
-	m_destinatinRectangle.w = m_sourceRectangle.w;
-	m_destinatinRectangle.h = m_sourceRectangle.h;
-
-	//Modifying the x and y co-ordinates of source rectangle
-	m_sourceRectangle.x = 50;
-	m_sourceRectangle.y = 50;
+	//SDL_QueryTexture is removed as we are defining our own sizes now
 	
-	//Modifying the x and y co-ordinates of destination rectangle
-	m_destinatinRectangle.x = 100;
-	m_destinatinRectangle.y = 100;
+	//New size
+	m_sourceRectangle.w = 128;
+	m_sourceRectangle.h = 82;
 
+	//Modifying the x and y co-ordinates of source and destination rectangle
+	m_sourceRectangle.x = m_destinatinRectangle.x = 0;
+	m_sourceRectangle.y = m_destinatinRectangle.y = 0;
+	
 	m_bRunning = true;	//everything inited successfully, start the main loop
 	return true;
 }
@@ -76,11 +68,8 @@ void Game::render()
 {
 	SDL_RenderClear(m_pRenderer); //clear the renderer to the draw color
 
-	/*Code to draw the Texture
-	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinatinRectangle);*/
-	
-	//Ignoring source and destination rectangle to use entire texture as NULL is passed
-	SDL_RenderCopy(m_pRenderer, m_pTexture, NULL, NULL);
+	//Code to draw the Texture
+	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinatinRectangle);
 	
 	SDL_RenderPresent(m_pRenderer);	//draw to the screen
 }
