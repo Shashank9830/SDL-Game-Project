@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TextureManger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />

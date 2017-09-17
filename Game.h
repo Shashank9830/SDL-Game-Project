@@ -5,15 +5,15 @@
 
 #include "SDL.h"
 #include "SDL_image.h"
+#include "TextureManager.h"
 
 class Game
 {	
 	SDL_Window *m_pWindow;
 	SDL_Renderer *m_pRenderer;
-
-	SDL_Texture *m_pTexture;		//the new SDL_Texture variable
-	SDL_Rect m_sourceRectangle;		//the first rectangle
-	SDL_Rect m_destinationRectangle;	//another rectangle
+	
+	int m_currentFrame;
+	TextureManager m_textureManager;
 
 	bool m_bRunning;
 

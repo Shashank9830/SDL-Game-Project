@@ -7,13 +7,13 @@
 #include "SDL_image.h"
 #include <map>	//for std::map
 
-class Game
+class TextureManager
 {
 	std::map<std::string, SDL_Texture*> m_textureMap;
 
 public:
 
-	bool load(std::string filename, std::string id, SDL_Renderer *pRenderer);
+	bool load(std::string fileName, std::string id, SDL_Renderer *pRenderer);
 	
 	//draw
 	void draw(std::string id, int x, int y, int width, int height, SDL_Renderer *pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
