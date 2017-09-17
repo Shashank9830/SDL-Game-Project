@@ -59,8 +59,10 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 	//Source and Destination rectangle have same dimensions
 	m_destinatinRectangle.w = m_sourceRectangle.w;
 	m_destinatinRectangle.h = m_sourceRectangle.h;
-	m_sourceRectangle.x = 0;
-	m_sourceRectangle.y = 0;
+
+	//Modifying the x and y co-ordinates of source rectangle
+	m_sourceRectangle.x = 50;
+	m_sourceRectangle.y = 50;
 	
 	//Modifying the x and y co-ordinates of destination rectangle
 	m_destinatinRectangle.x = 100;
