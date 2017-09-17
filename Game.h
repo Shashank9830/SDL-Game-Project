@@ -4,6 +4,7 @@
 #define __Game__
 
 #include "SDL.h"
+#include "SDL_image.h"
 
 class Game
 {	
@@ -12,7 +13,7 @@ class Game
 
 	SDL_Texture *m_pTexture;		//the new SDL_Texture variable
 	SDL_Rect m_sourceRectangle;		//the first rectangle
-	SDL_Rect m_destinatinRectangle;	//another rectangle
+	SDL_Rect m_destinationRectangle;	//another rectangle
 
 	bool m_bRunning;
 

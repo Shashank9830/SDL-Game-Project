@@ -24,7 +24,7 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 			if (m_pRenderer != 0) //renderer init success
 			{
 				std::cout << "renderer init success\n";
-				SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+				SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 			}
 			else
 			{
@@ -46,7 +46,7 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 	std::cout << "init success\n";
 
 	//Loading sprite sheet
-	SDL_Surface *pTempSurface = SDL_LoadBMP("assets/animate.bmp");
+	SDL_Surface *pTempSurface = IMG_Load("assets/animate.png");
 	m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
 	SDL_FreeSurface(pTempSurface);
 
@@ -57,12 +57,12 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 	m_sourceRectangle.h = 82;
 
 	//Set destination rectangle equal to source rectangle
-	m_destinatinRectangle.w = m_sourceRectangle.w;
-	m_destinatinRectangle.h = m_sourceRectangle.h;
+	m_destinationRectangle.w = m_sourceRectangle.w;
+	m_destinationRectangle.h = m_sourceRectangle.h;
 
 	//Modifying the x and y co-ordinates of source and destination rectangle
-	m_destinatinRectangle.x = m_sourceRectangle.x;
-	m_destinatinRectangle.y = m_sourceRectangle.y;
+	m_destinationRectangle.x = m_sourceRectangle.x = 0;
+	m_destinationRectangle.y = m_sourceRectangle.y = 0;
 	
 	m_bRunning = true;	//everything inited successfully, start the main loop
 	return true;
@@ -94,7 +94,7 @@ void Game::render()
 	SDL_RenderClear(m_pRenderer); //clear the renderer to the draw color
 
 	//Code to draw the Texture
-	SDL_RenderCopyEx(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinatinRectangle, 0, 0, SDL_FLIP_HORIZONTAL);
+	SDL_RenderCopyEx(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle, 0, 0, SDL_FLIP_NONE);
 	
 	SDL_RenderPresent(m_pRenderer);	//draw to the screen
 }
