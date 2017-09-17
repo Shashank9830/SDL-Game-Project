@@ -56,11 +56,15 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 	m_sourceRectangle.w = 50;
 	m_sourceRectangle.h = 50;
 
-	//Setting co-ordinates x and y and the dimensions of the destiantion rectangle
-	m_destinatinRectangle.x = m_sourceRectangle.x = 0;
-	m_destinatinRectangle.y = m_sourceRectangle.y = 0;
+	//Source and Destination rectangle have same dimensions
 	m_destinatinRectangle.w = m_sourceRectangle.w;
 	m_destinatinRectangle.h = m_sourceRectangle.h;
+	m_sourceRectangle.x = 0;
+	m_sourceRectangle.y = 0;
+	
+	//Modifying the x and y co-ordinates of destination rectangle
+	m_destinatinRectangle.x = 100;
+	m_destinatinRectangle.y = 100;
 
 	m_bRunning = true;	//everything inited successfully, start the main loop
 	return true;
