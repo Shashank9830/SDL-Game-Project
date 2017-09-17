@@ -46,7 +46,7 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 	std::cout << "init success\n";
 
 	//Loading sprite sheet
-	SDL_Surface *pTempSurface = IMG_Load("assets/animate.png");
+	SDL_Surface *pTempSurface = IMG_Load("assets/animate-alpha.png");
 	m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
 	SDL_FreeSurface(pTempSurface);
 
