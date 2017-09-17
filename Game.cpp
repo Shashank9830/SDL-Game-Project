@@ -68,16 +68,6 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 	return true;
 }
 
-void Game::render()
-{
-	SDL_RenderClear(m_pRenderer); //clear the renderer to the draw color
-
-	//Code to draw the Texture
-	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinatinRectangle);
-	
-	SDL_RenderPresent(m_pRenderer);	//draw to the screen
-}
-
 void Game::handleEvents()
 {
 	SDL_Event event;
@@ -92,6 +82,21 @@ void Game::handleEvents()
 		default: break;
 		}
 	}
+}
+
+void Game::update()
+{
+	m_sourceRectangle.x = 128 * int(((SDL_GetTicks() / 100) % 6));
+}
+
+void Game::render()
+{
+	SDL_RenderClear(m_pRenderer); //clear the renderer to the draw color
+
+	//Code to draw the Texture
+	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinatinRectangle);
+	
+	SDL_RenderPresent(m_pRenderer);	//draw to the screen
 }
 
 void Game::clean()

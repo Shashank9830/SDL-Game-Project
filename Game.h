@@ -24,7 +24,7 @@ public:
 	bool init(const char *title, int xpos, int ypos, int height, int width, bool fullscreen);
 
 	void render();
-	//void update();
+	void update();
 	void handleEvents();
 	void clean();
 
