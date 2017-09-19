@@ -45,6 +45,13 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 	}
 	std::cout << "init success\n";
 
+	//load TextureManager
+	if (!TheTextureManager::Instance()->load("assets/animate-alpha.png", "animate", m_pRenderer))
+	{
+		return false;
+	}
+
+	//use GameObject and Player
 	m_go.load(100, 100, 128, 82, "animate");
 	m_player.load(300, 300, 128, 82, "animate");
 	
@@ -78,7 +85,6 @@ void Game::render()
 {
 	SDL_RenderClear(m_pRenderer); //clear the renderer to the draw color
 	
-	//Using game objects now in place of TextureManager Instance
 	m_go.draw(m_pRenderer);
 	m_player.draw(m_pRenderer);
 	
