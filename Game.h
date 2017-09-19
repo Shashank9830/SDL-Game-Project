@@ -6,11 +6,16 @@
 #include "SDL.h"
 #include "SDL_image.h"
 #include "TextureManager.h"
+#include "GameObject.h"
+#include "Player.h"
 
 class Game
 {	
 	SDL_Window *m_pWindow;
 	SDL_Renderer *m_pRenderer;
+
+	GameObject m_go;
+	Player m_player;
 	
 	int m_currentFrame;
 
