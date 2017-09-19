@@ -45,7 +45,11 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 	}
 	std::cout << "init success\n";
 
-	m_textureManager.load("assets/animate-alpha.png", "animate", m_pRenderer);
+	//load
+	if (!TheTextureManager::Instance()->load("assets/animate-alpha.png", "animate", m_pRenderer))
+	{
+		return false;
+	}
 	
 	m_bRunning = true;	//everything inited successfully, start the main loop
 	return true;
@@ -76,9 +80,11 @@ void Game::render()
 {
 	SDL_RenderClear(m_pRenderer); //clear the renderer to the draw color
 	
-	m_textureManager.draw("animate", 0, 0, 128, 82, m_pRenderer);
+	//to draw
+	TheTextureManager::Instance()->draw("animate", 0, 0, 128, 82, m_pRenderer);
 
-	m_textureManager.drawFrame("animate", 100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
+	//to draw frame
+	TheTextureManager::Instance()->drawFrame("animate", 100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
 	
 	SDL_RenderPresent(m_pRenderer);	//draw to the screen
 }
