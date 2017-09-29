@@ -16,11 +16,6 @@ class Game
 	SDL_Window *m_pWindow;
 	SDL_Renderer *m_pRenderer;
 
-	//these are now pointer objects
-	GameObject* m_go;
-	GameObject* m_player;
-	GameObject* m_enemy;
-
 	//GameObject array
 	std::vector<GameObject*> m_gameObjects;
 	
