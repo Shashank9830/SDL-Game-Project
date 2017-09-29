@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>	//for std::vector
 #include "Game.h"
 
 bool Game::init(const char *title, int xpos, int ypos, int width, int height, bool fullscreen)
@@ -51,9 +52,17 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 		return false;
 	}
 
-	//use GameObject and Player
-	m_go.load(100, 100, 128, 82, "animate");
-	m_player.load(300, 300, 128, 82, "animate");
+	//creating game objects
+	m_go = new GameObject();
+	m_player = new Player();
+
+	//loading game objects
+	m_go->load(100, 100, 128, 82, "animate");
+	m_player->load(300, 300, 128, 82, "animate");
+
+	//pushing the game objects in vector
+	m_gameObjects.push_back(m_go);
+	m_gameObjects.push_back(m_player);
 	
 	m_bRunning = true;	//everything inited successfully, start the main loop
 	return true;
@@ -77,17 +86,23 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	m_go.update();
-	m_player.update();
+	//loop through and update our objects
+	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); ++i)
+	{
+		m_gameObjects[i]->update();
+	}
 }
 
 void Game::render()
 {
 	SDL_RenderClear(m_pRenderer); //clear the renderer to the draw color
 	
-	m_go.draw(m_pRenderer);
-	m_player.draw(m_pRenderer);
-	
+	//loop through our objects and draw them
+	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->draw(m_pRenderer);
+	}
+
 	SDL_RenderPresent(m_pRenderer);	//draw to the screen
 }
 

@@ -14,8 +14,12 @@ class Game
 	SDL_Window *m_pWindow;
 	SDL_Renderer *m_pRenderer;
 
-	GameObject m_go;
-	Player m_player;
+	//these are now pointer objects
+	GameObject* m_go;
+	Player* m_player;
+
+	//GameObject array
+	std::vector<GameObject*> m_gameObjects;
 	
 	int m_currentFrame;
 
