@@ -1,35 +1,28 @@
 //Game is now divided into modules
 
 #include "Game.h"
-#include <Windows.h>
 #include <iostream>
-
-//our Game Object
-Game *g_game = 0;
 
 int main(int argc, char* argv[])
 {	
-	//my fix for the tip in chapter 1 to use freopen()
-	FILE *stream;
-	AllocConsole();
-	freopen_s(&stream,"CON", "w", stdout);
-
-	g_game = new Game();
-
-	g_game->init("Chapter 1", 100, 100, 640, 580, false);
-
-	while (g_game->running())
+	std::cout << "game init attempt...\n";
+	if (TheGame::Instance()->init("Chapter 1", 100, 100, 640, 480, false))
 	{
-		g_game->handleEvents();
-		g_game->update();
-		g_game->render();
+		std::cout << "game init success!\n";
+		while (TheGame::Instance()->running())
+		{
+			TheGame::Instance()->handleEvents();
+			TheGame::Instance()->update();
+			TheGame::Instance()->render();
 
-		SDL_Delay(10);	//add the delay
+			SDL_Delay(10);
+		}
 	}
-	g_game->clean();
-
-	//free space
-	delete g_game;
+	else
+	{
+		std::cout << "game init failure - " << SDL_GetError() << "\n";
+		return -1;
+	}
 
 	return 0;
 }
