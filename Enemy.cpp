@@ -1,13 +1,10 @@
 #include "Enemy.h"
 
-void Enemy::load(int x, int y, int width, int height, std::string textureID)
-{
-	GameObject::load(x, y, width, height, textureID);
-}
+Enemy::Enemy(const LoaderParams* pParams) : SDLGameObject(pParams) { }
 
-void Enemy::draw(SDL_Renderer *pRenderer)
+void Enemy::draw()
 {
-	GameObject::draw(pRenderer);
+	SDLGameObject::draw(); //now we use SDLGameObject
 }
 
 //Everything is same as Player, only update() characteristics differ
