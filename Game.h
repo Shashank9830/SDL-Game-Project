@@ -17,7 +17,8 @@ class Game
 
 	//these are now pointer objects
 	GameObject* m_go;
-	Player* m_player;
+	GameObject* m_player;
+	GameObject* m_enemy;
 
 	//GameObject array
 	std::vector<GameObject*> m_gameObjects;
