@@ -24,5 +24,8 @@ int main(int argc, char* argv[])
 		return -1;
 	}
 
+	std::cout << "game closing...\n";
+	TheGame::Instance()->clean();
+
 	return 0;
 }
