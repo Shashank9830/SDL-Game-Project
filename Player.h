@@ -2,15 +2,16 @@
 
 #ifndef __Player__
 #define __Player__
-#include "GameObject.h"
+#include "SDLGameObject.h"
 
-class Player : public GameObject //inherit from GameObject
+class Player : public SDLGameObject //inherit from SDLGameObject
 {
 public:
-	void load(int x, int y, int width, int height, std::string textureID);
-	void draw(SDL_Renderer *pRenderer);
-	void update();
-	void clean();
+	Player(const LoaderParams* pParams);
+
+	virtual void draw();
+	virtual void update();
+	virtual void clean();
 };
 
 #endif //defined(__Player__)
