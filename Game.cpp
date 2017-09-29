@@ -1,4 +1,7 @@
 #include "Game.h"
+#include "TextureManager.h"
+#include "Player.h"
+#include "Enemy.h"
 
 //definotion for static instance 
 Game* Game::s_pInstance = 0;

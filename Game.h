@@ -3,12 +3,6 @@
 #ifndef __Game__
 #define __Game__
 
-#include "SDL.h"
-#include "SDL_image.h"
-#include "TextureManager.h"
-#include "GameObject.h"
-#include "Player.h"
-#include "Enemy.h"
 #include <vector>
 
 class Game
