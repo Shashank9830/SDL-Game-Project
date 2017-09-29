@@ -28,10 +28,28 @@ class Game
 
 	bool m_bRunning;
 
+	//constructor is now private
+	Game() { m_bRunning = false; }
+	~Game() {}
+
+	//s_pInstance member variable
+	static Game* s_pInstance;
+
 public:
 
-	Game() { m_bRunning = false; }
-	~Game(){}
+	//instance function to make this class a singleton
+	static Game* Instance()
+	{
+		if (s_pInstance == 0)
+		{
+			s_pInstance = new Game();
+			return s_pInstance;
+		}
+		return s_pInstance;
+	}
+
+	//function to return SDL_Renderer object
+	SDL_Renderer* getRenderer() const { return m_pRenderer; }
 	
 	bool init(const char *title, int xpos, int ypos, int height, int width, bool fullscreen);
 
@@ -40,10 +58,9 @@ public:
 	void handleEvents();
 	void clean();
 
-	bool running()
-	{
-		return m_bRunning;
-	}
+	bool running()	{ return m_bRunning; }
 };
+
+typedef Game TheGame;
 
 #endif /* defined(__Game__)*/
