@@ -4,9 +4,6 @@
 #define __SDLGameObject__
 
 #include "GameObject.h"
-#include "LoaderParams.h"
-#include "TextureManager.h"
-#include "Game.h"
 
 class SDLGameObject: public GameObject
 {
