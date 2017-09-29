@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "SDL.h"
 
 Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams) { }
 

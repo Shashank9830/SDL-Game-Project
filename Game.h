@@ -3,6 +3,9 @@
 #ifndef __Game__
 #define __Game__
 
+#include "SDL.h"
+#include "SDL_image.h"
+#include "GameObject.h"
 #include <vector>
 
 class Game
