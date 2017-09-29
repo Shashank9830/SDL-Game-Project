@@ -2,7 +2,7 @@
 
 #ifndef __GameObject__
 #define __GameObject__
-#include <iostream>
+
 #include "LoaderParams.h"
 
 class GameObject
