@@ -4,7 +4,7 @@
 //function to calculate the length of a vector
 float Vector2D::length()
 {
-	return sqrt((m_x * m_x) + (m_y * m_y));
+	return (float)sqrt((m_x * m_x) + (m_y * m_y));
 }
 
 //addition of two vectors using + operator
