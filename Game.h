@@ -21,7 +21,7 @@ class Game
 	bool m_bRunning;
 
 	//constructor is now private
-	Game() { m_bRunning = false; }
+	Game():m_bRunning(false){}
 	~Game() {}
 
 	//s_pInstance member variable
@@ -45,12 +45,15 @@ public:
 	
 	bool init(const char *title, int xpos, int ypos, int height, int width, bool fullscreen);
 
-	void render();
-	void update();
-	void handleEvents();
-	void clean();
+	bool running();
 
-	bool running()	{ return m_bRunning; }
+	void handleEvents();
+	void update();
+	void render();
+	void clean();
+	
+	void quit();
+
 };
 
 typedef Game TheGame;
