@@ -109,3 +109,8 @@ void Game::clean()
 	SDL_DestroyRenderer(m_pRenderer);
 	SDL_Quit();
 }
+
+void Game::quit()
+{
+	m_bRunning = false;
+}
