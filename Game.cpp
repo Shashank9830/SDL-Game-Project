@@ -2,6 +2,7 @@
 #include "TextureManager.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "InputHandler.h"
 
 //definotion for static instance 
 Game* Game::s_pInstance = 0;
@@ -48,6 +49,10 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 		std::cout << "SDL init fail\n";
 		return false;	//SDL init fail
 	}
+	
+	//initialise joysticks
+	TheInputHandler::Instance()->initialiseJoysticks();
+
 	std::cout << "init success\n";
 
 	//load TextureManager
@@ -64,20 +69,15 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 	return true;
 }
 
-void Game::handleEvents()
+bool Game::running()
 {
-	SDL_Event event;
-	if (SDL_PollEvent(&event))
-	{
-		switch (event.type)
-		{
-		case SDL_QUIT:
-			m_bRunning = false;
-			break;
+	return m_bRunning;
+}
 
-		default: break;
-		}
-	}
+void Game::handleEvents()
+{	
+	//waits and listens for a quit event 
+	TheInputHandler::Instance()->update();
 }
 
 void Game::update()
@@ -105,6 +105,10 @@ void Game::render()
 void Game::clean()
 {
 	std::cout << "cleaning game\n";
+	
+	//close the joysticks
+	TheInputHandler::Instance()->clean();
+
 	SDL_DestroyWindow(m_pWindow);
 	SDL_DestroyRenderer(m_pRenderer);
 	SDL_Quit();
