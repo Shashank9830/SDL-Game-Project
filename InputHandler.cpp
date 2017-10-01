@@ -2,6 +2,9 @@
 #include <iostream>
 #include "Game.h"
 
+//definition for static instance variable
+InputHandler* InputHandler::s_pInstance = 0;
+
 void InputHandler::initialiseJoysticks()
 {	
 	//check if joystick was initialised(will return non zero)

@@ -4,7 +4,7 @@
 #include "Enemy.h"
 #include "InputHandler.h"
 
-//definotion for static instance 
+//definition for static instance 
 Game* Game::s_pInstance = 0;
 
 bool Game::init(const char *title, int xpos, int ypos, int width, int height, bool fullscreen)
