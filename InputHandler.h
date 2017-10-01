@@ -4,6 +4,7 @@
 #define __InputHandler__
 
 #include "SDL.h"
+#include <vector>
 
 class InputHandler
 {
@@ -11,6 +12,11 @@ class InputHandler
 	~InputHandler(){}
 
 	static InputHandler* s_pInstance;
+
+	std::vector<SDL_Joystick*> m_joysticks;
+
+	bool m_bJoysticksInitialised;
+
 public:
 
 	static InputHandler* Instance()
@@ -21,6 +27,10 @@ public:
 		}
 		return s_pInstance;
 	}
+
+	void initialiseJoysticks();
+
+	bool joysticksInitialised();
 
 	void update();
 	void clean();
