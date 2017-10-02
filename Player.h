@@ -6,6 +6,7 @@
 
 class Player : public SDLGameObject //inherit from SDLGameObject
 {
+	void handleInput();
 public:
 	Player(const LoaderParams* pParams);
 
