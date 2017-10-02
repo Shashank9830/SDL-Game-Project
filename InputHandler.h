@@ -5,6 +5,7 @@
 
 #include "SDL.h"
 #include <vector>
+#include "Vector2D.h"
 
 class InputHandler
 {
@@ -14,6 +15,12 @@ class InputHandler
 	static InputHandler* s_pInstance;
 
 	std::vector<SDL_Joystick*> m_joysticks;
+
+	//a vector of pairs(one for each stick)
+	std::vector<std::pair<Vector2D*, Vector2D*>> m_joystickValues;
+
+	//variable to account the sensitivity of the controller
+	const int m_joystickDeadZone = 10000;
 
 	bool m_bJoysticksInitialised;
 
@@ -31,6 +38,10 @@ public:
 	void initialiseJoysticks();
 
 	bool joysticksInitialised();
+
+	//joy = Joystick identifier, stick = 1(left) and 2(right)
+	int xvalue(int joy, int stick);
+	int yvalue(int joy, int stick);
 
 	void update();
 	void clean();
