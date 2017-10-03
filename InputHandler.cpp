@@ -75,11 +75,11 @@ int InputHandler::xvalue(int joy, int stick)
 	{
 		if (stick == 1)	//left stick
 		{
-			return m_joystickValues[joy].first->getX();
+			return (int)m_joystickValues[joy].first->getX();
 		}
 		else //right stick
 		{
-			return m_joystickValues[joy].second->getX();
+			return (int)m_joystickValues[joy].second->getX();
 		}
 	}
 	return 0;
@@ -91,11 +91,11 @@ int InputHandler::yvalue(int joy, int stick)
 	{
 		if (stick == 1)	//left stick
 		{
-			return m_joystickValues[joy].first->getY();
+			return (int)m_joystickValues[joy].first->getY();
 		}
 		else //right stick
 		{
-			return m_joystickValues[joy].second->getY();
+			return (int)m_joystickValues[joy].second->getY();
 		}
 	}
 	return 0;

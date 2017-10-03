@@ -35,45 +35,41 @@ void Enemy::handleInput()
 	{	
 		//for analog sticks of the second joystick
 		if ((TheInputHandler::Instance()->xvalue(1, 1) > 0) || (TheInputHandler::Instance()->xvalue(1, 1) < 0))
-		{
+		{	
+			//if we are moving the player with analog stick while pressing Y
+			//it will get an acceleration of 2 in that direction
 			m_velocity.setX((float)1 * TheInputHandler::Instance()->xvalue(1, 1));
 			if (TheInputHandler::Instance()->getButtonState(0, 3))	//Button 3(Yellow)
 			{
 				//give the player some acceleration
-				m_acceleration.setX(2 * TheInputHandler::Instance()->xvalue(1, 1));
+				m_acceleration.setX((float)2 * TheInputHandler::Instance()->xvalue(1, 1));
 			}
 		}
 
 		if ((TheInputHandler::Instance()->yvalue(1, 1) > 0) || (TheInputHandler::Instance()->yvalue(1, 1) < 0))
 		{
 			m_velocity.setY((float)1 * TheInputHandler::Instance()->yvalue(1, 1));
-
-			//if we are moving the player with analog stick while pressing Y
-			//it will get an acceleration of 2 in that direction
-			if (TheInputHandler::Instance()->getButtonState(1, 3))	//Button 3(Yellow)
+			if (TheInputHandler::Instance()->getButtonState(1, 3))
 			{
-				//give the player some acceleration
-				m_acceleration.setY(2 * TheInputHandler::Instance()->yvalue(1, 1));
+				m_acceleration.setY((float)2 * TheInputHandler::Instance()->yvalue(1, 1));
 			}
 		}
 
 		if ((TheInputHandler::Instance()->xvalue(1, 2) > 0) || (TheInputHandler::Instance()->xvalue(1, 2) < 0))
 		{
 			m_velocity.setX((float)1 * TheInputHandler::Instance()->xvalue(1, 2));
-			if (TheInputHandler::Instance()->getButtonState(1, 3))	//Button 3(Yellow)
+			if (TheInputHandler::Instance()->getButtonState(1, 3))
 			{
-				//give the player some acceleration
-				m_acceleration.setX(2 * TheInputHandler::Instance()->xvalue(1, 1));
+				m_acceleration.setX((float)2 * TheInputHandler::Instance()->xvalue(1, 1));
 			}
 		}
 
 		if ((TheInputHandler::Instance()->yvalue(1, 2) > 0) || (TheInputHandler::Instance()->yvalue(1, 2) < 0))
 		{
 			m_velocity.setY((float)1 * TheInputHandler::Instance()->yvalue(1, 2));
-			if (TheInputHandler::Instance()->getButtonState(1, 3))	//Button 3(Yellow)
+			if (TheInputHandler::Instance()->getButtonState(1, 3))
 			{
-				//give the player some acceleration
-				m_acceleration.setY(2 * TheInputHandler::Instance()->yvalue(1, 1));
+				m_acceleration.setY((float)2 * TheInputHandler::Instance()->yvalue(1, 1));
 			}
 		}
 	}
