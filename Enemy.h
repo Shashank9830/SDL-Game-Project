@@ -6,6 +6,7 @@
 
 class Enemy: public SDLGameObject
 {
+	void handleInput();
 public:
 
 	Enemy(const LoaderParams* pParams);
