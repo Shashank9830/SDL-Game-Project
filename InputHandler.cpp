@@ -26,8 +26,19 @@ void InputHandler::initialiseJoysticks()
 			{
 				m_joysticks.push_back(joy);
 				
-				//add our pair
+				//add our pair of analog sticks for that joystick
 				m_joystickValues.push_back(std::make_pair(new Vector2D(0, 0), new Vector2D(0, 0)));
+
+				//initialize all the buttons for this joystick to false state
+				std::vector <bool> tempButtons;
+
+				for (int j = 0; j < SDL_JoystickNumButtons(joy); ++j)
+				{
+					tempButtons.push_back(false);
+				}
+
+				//push this joystick in the outer container
+				m_buttonStates.push_back(tempButtons);
 			}
 			else
 			{
@@ -51,6 +62,11 @@ void InputHandler::initialiseJoysticks()
 bool InputHandler::joysticksInitialised()
 {
 	return m_bJoysticksInitialised;
+}
+
+bool InputHandler::getButtonState(int joy, int buttonNumber)
+{
+	return m_buttonStates[joy][buttonNumber];
 }
 
 int InputHandler::xvalue(int joy, int stick)
@@ -173,6 +189,22 @@ void InputHandler::update()
 					m_joystickValues[whichOne].second->setY(0);
 				}
 			}
+		}
+
+		//listen if a button is pressed
+		if (event.type == SDL_JOYBUTTONDOWN)
+		{
+			int whichOne = event.jaxis.which;
+			//set the pressed button state to true
+			m_buttonStates[whichOne][event.jbutton.button] = true;
+		}
+
+		//listen if the button is released
+		if (event.type == SDL_JOYBUTTONUP)
+		{
+			int whichOne = event.jaxis.which;
+			//set the released button state to false
+			m_buttonStates[whichOne][event.jbutton.button] = false;
 		}
 	}
 }

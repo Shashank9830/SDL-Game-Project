@@ -19,6 +19,9 @@ class InputHandler
 	//a vector of pairs(one for each stick)
 	std::vector<std::pair<Vector2D*, Vector2D*>> m_joystickValues;
 
+	//a vector of vector(for each joystick and all of its buttons)
+	std::vector<std::vector<bool>> m_buttonStates;
+
 	//variable to account the sensitivity of the controller
 	const int m_joystickDeadZone = 10000;
 
@@ -38,6 +41,9 @@ public:
 	void initialiseJoysticks();
 
 	bool joysticksInitialised();
+
+	//Function to check if a specific button was pressed on a specific joystick
+	bool getButtonState(int joy, int buttonNumber);
 
 	//joy = Joystick identifier, stick = 1(left) and 2(right)
 	int xvalue(int joy, int stick);
