@@ -80,11 +80,15 @@ void Player::handleInput()
 			m_acceleration.setX(1);
 		}
 		*/
+	}
 
-		//check for mouse button input
-		if (InputHandler::Instance()->getMouseButtonState[LEFT])
-		{
-			m_acceleration.setX(1);
-		}
+	//check for mouse button input
+	if (InputHandler::Instance()->getMouseButtonState(LEFT))
+	{
+		m_acceleration.setX(-3);
+	}
+	if (InputHandler::Instance()->getMouseButtonState(RIGHT))
+	{
+		m_acceleration.setX(3);
 	}
 }
