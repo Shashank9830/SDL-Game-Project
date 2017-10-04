@@ -93,8 +93,13 @@ void Player::handleInput()
 	}
 
 	//check for mouse motion input
-	
+	//commenting this feature as I don't want player to follow mouse
+	//uncomment the following code to enable the feature
+	/*
+
 	Vector2D vec = TheInputHandler::Instance()->getMousePosition();
 
 	m_velocity = (vec - m_position) / 100;
+	
+	*/
 }
