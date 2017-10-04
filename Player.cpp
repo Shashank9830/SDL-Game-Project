@@ -91,4 +91,10 @@ void Player::handleInput()
 	{
 		m_acceleration.setX(3);
 	}
+
+	//check for mouse motion input
+	
+	Vector2D *vec = TheInputHandler::Instance()->getMousePosition();
+
+	m_velocity = (*(vec) - m_position) / 100;
 }
