@@ -8,6 +8,7 @@ class Vector2D
 	float m_x;
 	float m_y;
 public:
+	Vector2D ()	{}	//default constructor
 	Vector2D(float x, float y): m_x(x), m_y(y) { }
 
 	float getX() { return m_x; }
