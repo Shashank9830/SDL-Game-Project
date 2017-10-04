@@ -243,9 +243,9 @@ void InputHandler::update()
 
 		//mouse button is pressed
 		if (event.type == SDL_MOUSEBUTTONDOWN)
-		{
+		{	
 			if (event.button.button == SDL_BUTTON_LEFT)
-			{
+			{	
 				m_mouseButtonStates[LEFT] = true;
 			}
 
@@ -260,10 +260,10 @@ void InputHandler::update()
 			}
 		}
 		//mouse button is released
-		if (event.type == SDL_MOUSEBUTTONDOWN)
+		if (event.type == SDL_MOUSEBUTTONUP)
 		{
 			if (event.button.button == SDL_BUTTON_LEFT)
-			{
+			{	
 				m_mouseButtonStates[LEFT] = false;
 			}
 
