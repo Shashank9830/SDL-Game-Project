@@ -5,6 +5,15 @@
 //definition for static instance variable
 InputHandler* InputHandler::s_pInstance = 0;
 
+//constructor initialises the mouse buttons to false
+InputHandler::InputHandler()
+{
+	for (int i = 0; i < 3; ++i)
+	{
+		m_mouseButtonStates.push_back(false);
+	}
+}
+
 void InputHandler::initialiseJoysticks()
 {	
 	//check if joystick was initialised(will return non zero)
@@ -69,6 +78,11 @@ bool InputHandler::getButtonState(int joy, int buttonNumber)
 	return m_buttonStates[joy][buttonNumber];
 }
 
+bool InputHandler::getMouseButtonState(int buttonNumber)
+{
+	return m_mouseButtonStates[buttonNumber];
+}
+
 int InputHandler::xvalue(int joy, int stick)
 {
 	if (m_joystickValues.size() > 0)
@@ -111,6 +125,12 @@ void InputHandler::update()
 		{
 			TheGame::Instance()->quit();
 		}
+		
+		/********************************************************************
+							LISTEN FOR JOYSTICK EVENTS
+		*********************************************************************/
+		
+		/***** Listen for Joystick Axis events *****/
 		
 		/*	Joystick Axis motion events
 		
@@ -189,7 +209,10 @@ void InputHandler::update()
 					m_joystickValues[whichOne].second->setY(0);
 				}
 			}
-		}
+		}	
+		//Stop listening for Joystick Axis events
+
+		/***** Listen for Joystick Button events *****/
 
 		//listen if a button is pressed
 		if (event.type == SDL_JOYBUTTONDOWN)
@@ -205,7 +228,56 @@ void InputHandler::update()
 			int whichOne = event.jaxis.which;
 			//set the released button state to false
 			m_buttonStates[whichOne][event.jbutton.button] = false;
+		}	
+		//Stop listening for Joystick Button events
+
+		/********************************************************************
+						STOP LISTENING FOR JOYSTICK EVENTS
+		*********************************************************************/
+
+		/********************************************************************
+							LISTEN FOR MOUSE EVENTS
+		*********************************************************************/
+
+		/***** Listen for Mouse Button events *****/
+
+		//mouse button is pressed
+		if (event.type == SDL_MOUSEBUTTONDOWN)
+		{
+			if (event.button.button == SDL_BUTTON_LEFT)
+			{
+				m_mouseButtonStates[LEFT] = true;
+			}
+
+			if (event.button.button == SDL_BUTTON_MIDDLE)
+			{
+				m_mouseButtonStates[MIDDLE] = true;
+			}
+
+			if (event.button.button == SDL_BUTTON_RIGHT)
+			{
+				m_mouseButtonStates[RIGHT] = true;
+			}
 		}
+		//mouse button is released
+		if (event.type == SDL_MOUSEBUTTONDOWN)
+		{
+			if (event.button.button == SDL_BUTTON_LEFT)
+			{
+				m_mouseButtonStates[LEFT] = false;
+			}
+
+			if (event.button.button == SDL_BUTTON_MIDDLE)
+			{
+				m_mouseButtonStates[MIDDLE] = false;
+			}
+
+			if (event.button.button == SDL_BUTTON_RIGHT)
+			{
+				m_mouseButtonStates[RIGHT] = false;
+			}
+		}
+		//Stop listening for Mouse Button events
 	}
 }
 
