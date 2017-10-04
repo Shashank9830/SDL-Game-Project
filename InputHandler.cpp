@@ -83,6 +83,11 @@ bool InputHandler::getMouseButtonState(int buttonNumber)
 	return m_mouseButtonStates[buttonNumber];
 }
 
+Vector2D* InputHandler::getMousePosition()
+{
+	return m_mousePosition;
+}
+
 int InputHandler::xvalue(int joy, int stick)
 {
 	if (m_joystickValues.size() > 0)
@@ -278,6 +283,13 @@ void InputHandler::update()
 			}
 		}
 		//Stop listening for Mouse Button events
+
+		/***** Listen for Mouse motion event *****/
+		if (event.type == SDL_MOUSEMOTION)
+		{
+			m_mousePosition->setX(event.motion.x);
+			m_mousePosition->setY(event.motion.y);
+		}
 	}
 }
 

@@ -32,6 +32,9 @@ class InputHandler
 	//vector for mouse buttons(0 = left, 1 = middle, 2 = right)
 	std::vector<bool> m_mouseButtonStates;
 
+	//vector for mouse position
+	Vector2D* m_mousePosition;
+
 	//variable to account the sensitivity of the controller
 	const int m_joystickDeadZone = 10000;
 
@@ -57,6 +60,9 @@ public:
 
 	//Function to check if a specific mouse button was pressed
 	bool getMouseButtonState(int buttonNumber);
+
+	//Function to return mouse position
+	Vector2D* getMousePosition();
 	
 	//joy = Joystick identifier, stick = 1(left) and 2(right)
 	int xvalue(int joy, int stick);
