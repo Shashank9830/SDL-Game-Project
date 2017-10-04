@@ -287,8 +287,8 @@ void InputHandler::update()
 		/***** Listen for Mouse motion event *****/
 		if (event.type == SDL_MOUSEMOTION)
 		{
-			m_mousePosition->setX(event.motion.x);
-			m_mousePosition->setY(event.motion.y);
+			m_mousePosition->setX((float)event.motion.x);
+			m_mousePosition->setY((float)event.motion.y);
 		}
 	}
 }
