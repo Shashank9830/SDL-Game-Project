@@ -13,7 +13,7 @@ void Player::update()
 {	
 	m_velocity.setX(0);
 	m_velocity.setY(0);
-
+	
 	m_acceleration.setX(0);
 	m_acceleration.setY(0);
 
@@ -102,4 +102,45 @@ void Player::handleInput()
 	m_velocity = (vec - m_position) / 100;
 	
 	*/
+
+	//Adding keyboard controls 
+	//UP DOWN RIGHT LEFT for movement
+	//Right Ctrl for Accelaration
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
+	{
+		m_velocity.setX(2);
+		//check if Right Ctrl is pressed, provide acc. if true
+		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RCTRL))
+		{
+			m_acceleration.setX(2.5);
+		}
+	}
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
+	{
+		m_velocity.setX(-2);
+		//check if Right Ctrl is pressed, provide acc. if true
+		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RCTRL))
+		{
+			m_acceleration.setX(-2.5);
+		}
+	}
+	//remember the cartesian plane is inverted along Y Axis
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
+	{
+		m_velocity.setY(-2);
+		//check if Right Ctrl is pressed, provide acc. if true
+		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RCTRL))
+		{
+			m_acceleration.setY(-2.5);
+		}
+	}
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN))
+	{
+		m_velocity.setY(2);
+		//check if Right Ctrl is pressed, provide acc. if true
+		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RCTRL))
+		{
+			m_acceleration.setY(2.5);
+		}
+	}
 }
