@@ -73,21 +73,6 @@ bool InputHandler::joysticksInitialised()
 	return m_bJoysticksInitialised;
 }
 
-bool InputHandler::getButtonState(int joy, int buttonNumber)
-{
-	return m_buttonStates[joy][buttonNumber];
-}
-
-bool InputHandler::getMouseButtonState(int buttonNumber)
-{
-	return m_mouseButtonStates[buttonNumber];
-}
-
-Vector2D InputHandler::getMousePosition()
-{
-	return m_mousePosition;
-}
-
 int InputHandler::xvalue(int joy, int stick)
 {
 	if (m_joystickValues.size() > 0)
@@ -120,12 +105,50 @@ int InputHandler::yvalue(int joy, int stick)
 	return 0;
 }
 
+bool InputHandler::getButtonState(int joy, int buttonNumber)
+{
+	return m_buttonStates[joy][buttonNumber];
+}
+
+bool InputHandler::getMouseButtonState(int buttonNumber)
+{
+	return m_mouseButtonStates[buttonNumber];
+}
+
+Vector2D InputHandler::getMousePosition()
+{
+	return m_mousePosition;
+}
+
+//Function to check if specific key was pressed by taking SDL_Scancode as param
+//Refer to this link for SDL_Scancode
+//https://wiki.libsdl.org/SDL_Scancode?highlight=%28%5CbCategoryEnum%5Cb%29%7C%28SDLEnumTemplate%29
+//SDL_Scancode for entire all the keys
+bool InputHandler::isKeyDown(SDL_Scancode key)
+{
+	if (m_keystates != NULL)
+	{
+		if (m_keystates[key] == 1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	return false;
+}
+
 void InputHandler::update()
 {
 	SDL_Event event;
 
 	while (SDL_PollEvent(&event))
-	{
+	{	
+		//Get a snapshot of the keyboard's current state
+		m_keystates = SDL_GetKeyboardState(NULL);
+
 		if (event.type == SDL_QUIT)
 		{
 			TheGame::Instance()->quit();

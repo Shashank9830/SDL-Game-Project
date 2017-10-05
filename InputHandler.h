@@ -29,16 +29,19 @@ class InputHandler
 	//a vector of vector(for each joystick and all of its buttons)
 	std::vector<std::vector<bool>> m_buttonStates;
 
+	//variable to account the sensitivity of the controller
+	const int m_joystickDeadZone = 10000;
+
+	bool m_bJoysticksInitialised;
+
 	//vector for mouse buttons(0 = left, 1 = middle, 2 = right)
 	std::vector<bool> m_mouseButtonStates;
 
 	//vector for mouse position
 	Vector2D m_mousePosition;
 
-	//variable to account the sensitivity of the controller
-	const int m_joystickDeadZone = 10000;
-
-	bool m_bJoysticksInitialised;
+	//Pointer to the array returned by SDL_GetKeyboardState with "int* numkeys" arg
+	const Uint8* m_keystates;
 
 public:
 
@@ -57,16 +60,19 @@ public:
 
 	//Function to check if a specific button was pressed on a specific joystick
 	bool getButtonState(int joy, int buttonNumber);
+	
+	//joy = Joystick identifier, stick = 1(left) and 2(right)
+	int xvalue(int joy, int stick);
+	int yvalue(int joy, int stick);
 
 	//Function to check if a specific mouse button was pressed
 	bool getMouseButtonState(int buttonNumber);
 
 	//Function to return mouse position
 	Vector2D getMousePosition();
-	
-	//joy = Joystick identifier, stick = 1(left) and 2(right)
-	int xvalue(int joy, int stick);
-	int yvalue(int joy, int stick);
+
+	//Function to check if a key was pressed on the keyboard
+	bool isKeyDown(SDL_Scancode key);
 
 	void update();
 	void clean();
