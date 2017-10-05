@@ -15,6 +15,9 @@ void Enemy::update()
 	m_velocity.setX(0);
 	m_velocity.setY(0);
 
+	m_acceleration.setX(0);
+	m_acceleration.setY(0);
+
 	handleInput();	//handles the input from joystick [2nd controller]
 
 	m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
