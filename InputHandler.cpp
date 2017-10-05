@@ -206,8 +206,8 @@ void InputHandler::onKeyUp()
 //mouse event functions
 void InputHandler::onMouseMove(SDL_Event &event)
 {
-	m_mousePosition->setX(event.motion.x);
-	m_mousePosition->setY(event.motion.y);
+	m_mousePosition->setX((float)event.motion.x);
+	m_mousePosition->setY((float)event.motion.y);
 }
 
 void InputHandler::onMouseButtonDown(SDL_Event &event)
