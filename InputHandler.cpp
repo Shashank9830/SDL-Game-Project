@@ -15,7 +15,18 @@ InputHandler::InputHandler()
 	m_mousePosition = new Vector2D(0, 0);
 }
 
+InputHandler::~InputHandler()
+{	
+	//delete what we created with new
+	delete m_mousePosition;
+	delete m_keystates;
 
+	//clear the vectors
+	m_joystickValues.clear();
+	m_joysticks.clear();
+	m_buttonStates.clear();
+	m_mouseButtonStates.clear();
+}
 
 void InputHandler::initialiseJoysticks()
 {	
