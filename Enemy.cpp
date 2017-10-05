@@ -73,4 +73,45 @@ void Enemy::handleInput()
 			}
 		}
 	}
+
+	//no mouse control for enemy
+
+	//keyboard A W S D for movement, Right Shift for acceleration
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_D))
+	{
+		m_velocity.setX(2);
+		//check if Right Ctrl is pressed, provide acc. if true
+		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RSHIFT))
+		{
+			m_acceleration.setX(2.5);
+		}
+	}
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_A))
+	{
+		m_velocity.setX(-2);
+		//check if Right Ctrl is pressed, provide acc. if true
+		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RSHIFT))
+		{
+			m_acceleration.setX(-2.5);
+		}
+	}
+	//remember the cartesian plane is inverted along Y Axis
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_W))
+	{
+		m_velocity.setY(-2);
+		//check if Right Ctrl is pressed, provide acc. if true
+		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RSHIFT))
+		{
+			m_acceleration.setY(-2.5);
+		}
+	}
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_S))
+	{
+		m_velocity.setY(2);
+		//check if Right Ctrl is pressed, provide acc. if true
+		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RSHIFT))
+		{
+			m_acceleration.setY(2.5);
+		}
+	}
 }
