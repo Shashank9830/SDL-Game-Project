@@ -105,7 +105,7 @@ void Player::handleInput()
 
 	//Adding keyboard controls 
 	//UP DOWN RIGHT LEFT for movement
-	//Right Ctrl for Accelaration
+	//Right Ctrl for Acceleration
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
 	{
 		m_velocity.setX(2);
