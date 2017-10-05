@@ -17,7 +17,7 @@ enum mouse_buttons
 class InputHandler
 {
 	InputHandler();
-	~InputHandler(){}
+	~InputHandler();
 
 	static InputHandler* s_pInstance;
 
