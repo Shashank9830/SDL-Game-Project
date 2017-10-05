@@ -38,7 +38,7 @@ class InputHandler
 	std::vector<bool> m_mouseButtonStates;
 
 	//vector for mouse position
-	Vector2D m_mousePosition;
+	Vector2D* m_mousePosition;
 
 	//Pointer to the array returned by SDL_GetKeyboardState with "int* numkeys" arg
 	const Uint8* m_keystates;
@@ -83,7 +83,7 @@ public:
 	bool getMouseButtonState(int buttonNumber);
 
 	//Function to return mouse position
-	Vector2D getMousePosition();
+	Vector2D* getMousePosition();
 
 	//Function to check if a key was pressed on the keyboard
 	bool isKeyDown(SDL_Scancode key);
