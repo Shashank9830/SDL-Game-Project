@@ -81,7 +81,7 @@ void Enemy::handleInput()
 	{
 		m_velocity.setX(2);
 		//check if Right Ctrl is pressed, provide acc. if true
-		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RSHIFT))
+		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LSHIFT))
 		{
 			m_acceleration.setX(2.5);
 		}
@@ -90,7 +90,7 @@ void Enemy::handleInput()
 	{
 		m_velocity.setX(-2);
 		//check if Right Ctrl is pressed, provide acc. if true
-		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RSHIFT))
+		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LSHIFT))
 		{
 			m_acceleration.setX(-2.5);
 		}
@@ -100,7 +100,7 @@ void Enemy::handleInput()
 	{
 		m_velocity.setY(-2);
 		//check if Right Ctrl is pressed, provide acc. if true
-		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RSHIFT))
+		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LSHIFT))
 		{
 			m_acceleration.setY(-2.5);
 		}
@@ -109,7 +109,7 @@ void Enemy::handleInput()
 	{
 		m_velocity.setY(2);
 		//check if Right Ctrl is pressed, provide acc. if true
-		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RSHIFT))
+		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LSHIFT))
 		{
 			m_acceleration.setY(2.5);
 		}
