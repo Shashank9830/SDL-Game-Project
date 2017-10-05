@@ -43,6 +43,20 @@ class InputHandler
 	//Pointer to the array returned by SDL_GetKeyboardState with "int* numkeys" arg
 	const Uint8* m_keystates;
 
+	//handle keyboard events
+	void onKeyDown();
+	void onKeyUp();
+
+	//handle mouse events
+	void onMouseMove(SDL_Event &event);
+	void onMouseButtonDown(SDL_Event &event);
+	void onMouseButtonUp(SDL_Event &event);
+
+	//handle joystick events
+	void onJoystickAxisMove(SDL_Event &event);
+	void onJoystickButtonDown(SDL_Event &event);
+	void onJoystickButtonUp(SDL_Event &event);
+
 public:
 
 	static InputHandler* Instance()
