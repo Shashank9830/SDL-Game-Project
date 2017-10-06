@@ -32,7 +32,7 @@ void GameStateMachine::changeState(GameState* pState)
 	if (!m_gameStates.empty())
 	{	
 		//if it already exits don't do anything
-		if (m_gameStates.back()->getStateID == pState->getStateID())
+		if (m_gameStates.back()->getStateID() == pState->getStateID())
 		{
 			return;	//do nothing
 		}

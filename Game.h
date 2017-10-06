@@ -6,6 +6,7 @@
 #include "SDL.h"
 #include "SDL_image.h"
 #include "GameObject.h"
+#include "GameStateMachine.h"
 #include <vector>
 
 class Game
@@ -26,6 +27,9 @@ class Game
 
 	//s_pInstance member variable
 	static Game* s_pInstance;
+
+	//add an object of our GameStateMachine
+	GameStateMachine* m_pGameStateMachine;
 
 public:
 

@@ -3,6 +3,8 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "InputHandler.h"
+#include "MenuState.h"
+#include "PlayState.h"
 
 //definition for static instance 
 Game* Game::s_pInstance = 0;
@@ -66,6 +68,11 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 	m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
 
 	m_bRunning = true;	//everything inited successfully, start the main loop
+
+	//load MENU state 
+	m_pGameStateMachine = new GameStateMachine();
+	m_pGameStateMachine->changeState(new MenuState());
+
 	return true;
 }
 
@@ -78,6 +85,11 @@ void Game::handleEvents()
 {	
 	//waits and listens for a quit event 
 	TheInputHandler::Instance()->update();
+
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
+	{
+		m_pGameStateMachine->changeState(new PlayState());
+	}
 }
 
 void Game::update()
