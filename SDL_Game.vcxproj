@@ -139,6 +139,7 @@
     <ClInclude Include="GameState.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="LoaderParams.h" />
+    <ClInclude Include="MenuState.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SDLGameObject.h" />
     <ClInclude Include="TextureManager.h" />
