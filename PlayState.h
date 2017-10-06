@@ -3,9 +3,10 @@
 #ifndef __PlayState__
 #define __PlayState__
 
+#include "GameState.h"
 #include <string>
 
-class PlayState
+class PlayState : public GameState
 {
 	static const std::string s_playID;
 
