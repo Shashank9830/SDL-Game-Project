@@ -94,22 +94,16 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	//loop through and update our objects
-	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); ++i)
-	{
-		m_gameObjects[i]->update();
-	}
+	//use GameStateMachine's update function
+	m_pGameStateMachine->update();
 }
 
 void Game::render()
 {
 	SDL_RenderClear(m_pRenderer); //clear the renderer to the draw color
 	
-	//loop through our objects and draw them
-	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->draw();
-	}
+	//use GameStateMachine's render function
+	m_pGameStateMachine->render();
 
 	SDL_RenderPresent(m_pRenderer);	//draw to the screen
 }
