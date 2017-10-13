@@ -19,6 +19,9 @@ public:
 
 	//remove present state without adding another state
 	void popState();
+
+	void update();
+	void render();
 };
 
 #endif //defined!(__GameStateMachine__)

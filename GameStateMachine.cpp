@@ -51,3 +51,21 @@ void GameStateMachine::changeState(GameState* pState)
 	//initialise it by calling its onEnter function
 	m_gameStates.back()->onEnter();
 }
+
+//function to update the current state
+void GameStateMachine::update()
+{
+	if (!m_gameStates.empty())
+	{
+		m_gameStates.back()->update();
+	}
+}
+
+//function to render the state
+void GameStateMachine::render()
+{
+	if (!m_gameStates.empty())
+	{
+		m_gameStates.back()->render();
+	}
+}
