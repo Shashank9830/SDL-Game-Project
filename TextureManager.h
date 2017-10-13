@@ -36,6 +36,9 @@ public:
 		}
 		return s_pInstance;
 	}
+
+	//function to remove a texture with specific texture ID
+	void clearFromTextureMap(std::string id);
 };
 typedef TextureManager TheTextureManager;
 
