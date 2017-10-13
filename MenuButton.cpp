@@ -18,7 +18,7 @@ void MenuButton::update()
 	Vector2D* pMousePos = TheInputHandler::Instance()->getMousePosition();
 
 	//check if the mouse pointer is over the button
-	if (pMousePos->getX() < (m_position.getX() + m_width) && pMousePos->getX > m_position.getX() && pMousePos->getY() < (m_position.getY() + m_height) && pMousePos->getY() > m_position.getY())
+	if (pMousePos->getX() < (m_position.getX() + m_width) && pMousePos->getX() > m_position.getX() && pMousePos->getY() < (m_position.getY() + m_height) && pMousePos->getY() > m_position.getY())
 	{	
 		//confirms that Mouse pointer is over the button
 		m_currentFrame = MOUSE_OVER;
