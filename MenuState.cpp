@@ -9,7 +9,7 @@ const std::string MenuState::s_menuID = "MENU";
 //update each game object
 void MenuState::update()
 {
-	for (int i = 0; i < m_gameObjects.size(); ++i)
+	for (int i = 0; i < (int)m_gameObjects.size(); ++i)
 	{
 		m_gameObjects[i]->update();
 	}
@@ -18,7 +18,7 @@ void MenuState::update()
 //draw the game objects
 void MenuState::render()
 {
-	for (int i = 0; i < m_gameObjects.size(); ++i)
+	for (int i = 0; i < (int)m_gameObjects.size(); ++i)
 	{
 		m_gameObjects[i]->draw();
 	}
@@ -53,7 +53,7 @@ bool MenuState::onEnter()
 bool MenuState::onExit()
 {	
 	//iterate through all the objects and clean 
-	for (int i = 0; i < m_gameObjects.size(); ++i)
+	for (int i = 0; i < (int)m_gameObjects.size(); ++i)
 	{
 		m_gameObjects[i]->clean();
 	}
