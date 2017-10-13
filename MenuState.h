@@ -4,10 +4,15 @@
 #define __MenuState__
 
 #include "GameState.h"
+#include <vector>
+#include "GameObject.h"
 
 class MenuState :public GameState
 {
 	static const std::string s_menuID;
+
+	//vector to store menu items
+	std::vector<GameObject*> m_gameObjects;
 	
 public:
 
