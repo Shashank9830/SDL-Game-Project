@@ -3,13 +3,15 @@
 #include "TextureManager.h"
 #include "Game.h"
 #include "MenuButton.h"
+#include "PlayState.h"
 
 const std::string MenuState::s_menuID = "MENU";
 
 //function to be called when PLAY button is pressed
 void MenuState::s_menuToPlay()
 {
-	std::cout << "Play button clicked\n";
+	//change the state to Play State
+	TheGame::Instance()->getStateMachine()->changeState(new PlayState());
 }
 
 //function to be called when EXIT button is pressed
