@@ -2,7 +2,7 @@
 #include "InputHandler.h"
 
 //constructor for MenuButton, calls SDLGameObject constructor first with LoaderParams
-MenuButton::MenuButton(const LoaderParams* pParams)	: SDLGameObject(pParams)
+MenuButton::MenuButton(const LoaderParams* pParams, void(*callback)()) : SDLGameObject(pParams), m_callback(callback)
 {
 	m_currentFrame = MOUSE_OUT;	//start at frame 0
 }
@@ -18,15 +18,26 @@ void MenuButton::update()
 	Vector2D* pMousePos = TheInputHandler::Instance()->getMousePosition();
 
 	//check if the mouse pointer is over the button
-	if (pMousePos->getX() < (m_position.getX() + m_width) && pMousePos->getX() > m_position.getX() && pMousePos->getY() < (m_position.getY() + m_height) && pMousePos->getY() > m_position.getY())
+	if (pMousePos->getX() < (m_position.getX() + m_width) 
+		&& pMousePos->getX() > m_position.getX() 
+		&& pMousePos->getY() < (m_position.getY() + m_height) 
+		&& pMousePos->getY() > m_position.getY())
 	{	
-		//confirms that Mouse pointer is over the button
-		m_currentFrame = MOUSE_OVER;
-
 		if (TheInputHandler::Instance()->getMouseButtonState(LEFT))
 		{	
 			//confirms that the button was clicked
 			m_currentFrame = CLICKED;
+
+			m_callback();	//call out callback function
+
+			m_bReleased = false;
+		}
+		else if (!TheInputHandler::Instance()->getMouseButtonState(LEFT))
+		{
+			m_bReleased = true;
+
+			//Mouse is over the button
+			m_currentFrame = MOUSE_OVER;
 		}
 	}
 	else
