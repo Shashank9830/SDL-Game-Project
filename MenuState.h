@@ -13,6 +13,10 @@ class MenuState :public GameState
 
 	//vector to store menu items
 	std::vector<GameObject*> m_gameObjects;
+
+	//call back functions for menu items
+	static void s_menuToPlay();
+	static void s_exitFromMenu();
 	
 public:
 

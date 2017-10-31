@@ -6,6 +6,18 @@
 
 const std::string MenuState::s_menuID = "MENU";
 
+//function to be called when PLAY button is pressed
+void MenuState::s_menuToPlay()
+{
+	std::cout << "Play button clicked\n";
+}
+
+//function to be called when EXIT button is pressed
+void MenuState::s_exitFromMenu()
+{
+	std::cout << "Exit button clicked\n";
+}
+
 //update each game object
 void MenuState::update()
 {
@@ -39,8 +51,8 @@ bool MenuState::onEnter()
 	}
 
 	//assign the new textures to game objects named button1 and button2
-	GameObject* button1 = new MenuButton(new LoaderParams(100, 100, 400, 100, "playbutton"));
-	GameObject* button2 = new MenuButton(new LoaderParams(100, 300, 400, 100, "exitbutton"));
+	GameObject* button1 = new MenuButton(new LoaderParams(100, 100, 400, 100, "playbutton"), s_menuToPlay);
+	GameObject* button2 = new MenuButton(new LoaderParams(100, 300, 400, 100, "exitbutton"), s_exitFromMenu);
 
 	//push them in the vector
 	m_gameObjects.push_back(button1);
