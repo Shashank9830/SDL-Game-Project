@@ -81,6 +81,11 @@ bool Game::running()
 	return m_bRunning;
 }
 
+GameStateMachine* Game::getStateMachine()
+{
+	return m_pGameStateMachine;
+}
+
 void Game::handleEvents()
 {	
 	//waits and listens for a quit event 

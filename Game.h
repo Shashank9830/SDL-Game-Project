@@ -46,6 +46,9 @@ public:
 
 	//function to return SDL_Renderer object
 	SDL_Renderer* getRenderer() const { return m_pRenderer; }
+
+	//function that allows access to state machine
+	GameStateMachine* getStateMachine();
 	
 	bool init(const char *title, int xpos, int ypos, int height, int width, bool fullscreen);
 
