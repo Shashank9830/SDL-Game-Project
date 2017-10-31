@@ -15,7 +15,8 @@ void MenuState::s_menuToPlay()
 //function to be called when EXIT button is pressed
 void MenuState::s_exitFromMenu()
 {
-	std::cout << "Exit button clicked\n";
+	//exit the game
+	TheGame::Instance()->quit();
 }
 
 //update each game object
