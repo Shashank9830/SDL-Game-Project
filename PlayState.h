@@ -4,11 +4,15 @@
 #define __PlayState__
 
 #include "GameState.h"
+#include "GameObject.h"
 #include <string>
+#include <vector>
 
 class PlayState : public GameState
 {
 	static const std::string s_playID;
+
+	std::vector< GameObject* > m_gameObjects;
 
 public:
 
