@@ -12,6 +12,7 @@ class Player : public SDLGameObject //inherit from SDLGameObject
 	Vector2D* target;
 public:
 	Player(const LoaderParams* pParams);
+	~Player();
 
 	virtual void draw();
 	virtual void update();
