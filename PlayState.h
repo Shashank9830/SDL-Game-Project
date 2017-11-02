@@ -4,9 +4,10 @@
 #define __PlayState__
 
 #include "GameState.h"
-#include "GameObject.h"
 #include <string>
 #include <vector>
+
+class GameObject;
 
 class PlayState : public GameState
 {
