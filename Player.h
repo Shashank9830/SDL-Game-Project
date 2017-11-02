@@ -7,6 +7,9 @@
 class Player : public SDLGameObject //inherit from SDLGameObject
 {
 	void handleInput();
+	
+	//variable to get mouse pointer position
+	Vector2D* target;
 public:
 	Player(const LoaderParams* pParams);
 

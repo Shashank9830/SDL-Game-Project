@@ -2,7 +2,15 @@
 #include "SDL.h"
 #include "InputHandler.h"
 
-Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams) { }
+Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams) 
+{
+	target = new Vector2D(0, 0);
+}
+
+Player::~Player()
+{
+	delete target;
+}
 
 void Player::draw()
 {
@@ -94,17 +102,19 @@ void Player::handleInput()
 
 	//check for mouse motion input
 	//commenting this feature as I don't want player to follow mouse
-	//uncomment the following code to enable the featurezx
-	/*
+	//uncomment the following code to enable the feature
+	//
 
-	Vector2D* vec;
-	vec = new Vector2D(0, 0);
+	//Vector2D* target;
+	//target = new Vector2D(0, 0);	//now initialized in constructor
 
-	vec = TheInputHandler::Instance()->getMousePosition();
+	target = TheInputHandler::Instance()->getMousePosition();
 
-	m_velocity = (*vec - m_position) / 100;
+	m_velocity = (*target - m_position);
+
+	m_velocity /= 50;	//slow down the follow movement
 	
-	*/
+	//
 
 	//Adding keyboard controls 
 	//UP DOWN RIGHT LEFT for movement
