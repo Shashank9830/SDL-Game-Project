@@ -2,7 +2,11 @@
 #include "SDL.h"
 #include "InputHandler.h"
 
-Enemy::Enemy(const LoaderParams* pParams) : SDLGameObject(pParams) { }
+Enemy::Enemy(const LoaderParams* pParams) : SDLGameObject(pParams) 
+{
+	m_velocity.setY(2);
+	m_velocity.setX(0.001);
+}
 
 void Enemy::draw()
 {
@@ -11,7 +15,10 @@ void Enemy::draw()
 
 //Update function for Enemy object
 void Enemy::update()
-{
+{	
+	//The following code handles joystick input
+	//Uncomment to enable the functionality
+	/*
 	m_velocity.setX(0);
 	m_velocity.setY(0);
 
@@ -19,8 +26,19 @@ void Enemy::update()
 	m_acceleration.setY(0);
 
 	handleInput();	//handles the input from joystick [2nd controller]
+	*/
 
 	m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
+
+	//Code to move the Enemy up and down
+	if (m_position.getY() < 0)
+	{
+		m_velocity.setY(2);
+	}
+	else if (m_position.getY() > 400)
+	{
+		m_velocity.setY(-2);
+	}
 
 	SDLGameObject::update();
 }
