@@ -355,3 +355,10 @@ void InputHandler::clean()
 		}
 	}
 }
+
+void InputHandler::reset()
+{
+	m_mouseButtonStates[LEFT] = false;
+	m_mouseButtonStates[MIDDLE] = false;
+	m_mouseButtonStates[RIGHT] = false;
+}

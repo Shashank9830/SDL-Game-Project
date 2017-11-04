@@ -88,6 +88,9 @@ public:
 	//Function to check if a key was pressed on the keyboard
 	bool isKeyDown(SDL_Scancode key);
 
+	//reset all mouse button states to false
+	void reset();	//required in PauseState
+	
 	void update();
 	void clean();
 };
