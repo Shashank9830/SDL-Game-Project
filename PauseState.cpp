@@ -7,11 +7,6 @@
 
 const std::string PauseState::s_pauseID = "PAUSE";
 
-void PauseState::s_pauseToMain()
-{
-	TheGame::Instance()->getStateMachine()->popState();
-}
-
 void PauseState::update()
 {	
 	//listen for ESC key to pause the game
