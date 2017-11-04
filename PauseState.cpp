@@ -13,7 +13,13 @@ void PauseState::s_pauseToMain()
 }
 
 void PauseState::update()
-{
+{	
+	//listen for ESC key to pause the game
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
+	{
+		TheGame::Instance()->getStateMachine()->pushState(new PauseState());
+	}
+
 	for (int i = 0; i < m_gameObjects.size(); ++i)
 	{
 		m_gameObjects[i]->update();
