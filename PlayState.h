@@ -24,6 +24,9 @@ public:
 	virtual bool onExit();
 
 	virtual std::string getStateID() const { return s_playID; }
+
+	//function to check collisions
+	bool checkCollision(SDLGameObject* p1, SDLGameObject* p2);
 };
 
 #endif //defined!(__PlayState__)
