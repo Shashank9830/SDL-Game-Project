@@ -17,7 +17,7 @@ void PlayState::update()
 		TheGame::Instance()->getStateMachine()->pushState(new PauseState());
 	}
 
-	for (int i = 0; i < m_gameObjects.size(); ++i)
+	for (int i = 0; i < (int)m_gameObjects.size(); ++i)
 	{
 		m_gameObjects[i]->update();
 	}
@@ -25,7 +25,7 @@ void PlayState::update()
 
 void PlayState::render()
 {
-	for (int i = 0; i < m_gameObjects.size(); ++i)
+	for (int i = 0; i < (int)m_gameObjects.size(); ++i)
 	{
 		m_gameObjects[i]->draw();
 	}
@@ -55,7 +55,7 @@ bool PlayState::onEnter()
 
 bool PlayState::onExit()
 {	
-	for (int i = 0; i < m_gameObjects.size(); ++i)
+	for (int i = 0; i < (int)m_gameObjects.size(); ++i)
 	{
 		m_gameObjects[i]->clean();
 	}
