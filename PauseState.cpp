@@ -9,7 +9,7 @@ const std::string PauseState::s_pauseID = "PAUSE";
 
 void PauseState::update()
 {	
-	for (int i = 0; i < m_gameObjects.size(); ++i)
+	for (int i = 0; i < (int)m_gameObjects.size(); ++i)
 	{
 		m_gameObjects[i]->update();
 	}
@@ -17,7 +17,7 @@ void PauseState::update()
 
 void PauseState::render()
 {
-	for (int i = 0; i < m_gameObjects.size(); ++i)
+	for (int i = 0; i < (int)m_gameObjects.size(); ++i)
 	{
 		m_gameObjects[i]->draw();
 	}
@@ -47,7 +47,7 @@ bool PauseState::onEnter()
 
 bool PauseState::onExit()
 {
-	for (int i = 0; i < m_gameObjects.size(); ++i)
+	for (int i = 0; i < (int)m_gameObjects.size(); ++i)
 	{
 		m_gameObjects[i]->clean();
 	}
