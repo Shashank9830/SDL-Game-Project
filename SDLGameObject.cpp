@@ -11,6 +11,7 @@ SDLGameObject::SDLGameObject(const LoaderParams* pParams): GameObject(pParams), 
 
 	m_currentRow = 1;
 	m_currentFrame = 1;
+	m_numFrames = pParams->getnFrames();
 }
 
 void SDLGameObject::draw()
