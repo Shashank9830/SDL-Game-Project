@@ -28,7 +28,7 @@ void Enemy::update()
 	handleInput();	//handles the input from joystick [2nd controller]
 	*/
 
-	m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
+	m_currentFrame = int(((SDL_GetTicks() / 100) % m_numFrames));
 
 	//Code to move the Enemy up and down
 	if (m_position.getY() < 0)
