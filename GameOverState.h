@@ -18,6 +18,7 @@ class GameOverState : public GameState
 
 	std::vector<GameObject*> m_gameObjects;
 public:
+	GameOverState();
 
 	virtual void update();
 	virtual void render();
