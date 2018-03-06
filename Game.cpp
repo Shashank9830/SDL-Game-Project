@@ -64,8 +64,8 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 	}
 
 	//creating and pushing objects
-	m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
-	m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
+	m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, 6, "animate")));
+	m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 128, 82, 6, "animate")));
 
 	m_bRunning = true;	//everything inited successfully, start the main loop
 
