@@ -3,6 +3,7 @@
 #ifndef __PlayState__
 #define __PlayState__
 
+#include "SDLGameObject.h"
 #include "GameState.h"
 #include <string>
 #include <vector>
