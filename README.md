@@ -82,6 +82,6 @@ See also the list of [contributors](https://github.com/shashank9830/Boolean-CKT-
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
+## Acknowledgements
 
 * Thanks to [PurpleBooth](https://github.com/PurpleBooth) for the [README-Template](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2).
