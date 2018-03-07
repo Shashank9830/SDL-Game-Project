@@ -31,11 +31,16 @@ void GameStateMachine::changeState(GameState* pState)
 	//check if a state is present
 	if (!m_gameStates.empty())
 	{	
+		//commenting out this part to modify the FSM, trying to fix pointer error
+		//UPDATE : 07-Mar-2018 (This part was creating read access violation error for other states)
+		//FIX : The states are removed and re-added even if they are already present in the FSM
+		/*
 		//if it already exits don't do anything
 		if (m_gameStates.back()->getStateID() == pState->getStateID())
 		{	
 			return;	//do nothing
 		}
+		*/
 
 		//otherwise remove the previous state
 		if (m_gameStates.back()->onExit())
