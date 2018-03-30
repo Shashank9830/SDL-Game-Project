@@ -2,7 +2,7 @@
 #include "SDL.h"
 #include "InputHandler.h"
 
-Enemy::Enemy(const LoaderParams* pParams) : SDLGameObject(pParams) 
+Enemy::Enemy() : SDLGameObject() 
 {
 	m_velocity.setY(2);
 	m_velocity.setX(0.001f);

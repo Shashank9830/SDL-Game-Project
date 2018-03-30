@@ -2,7 +2,7 @@
 #include "SDL.h"
 #include "InputHandler.h"
 
-Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams) 
+Player::Player() : SDLGameObject() 
 {
 	target = new Vector2D(0, 0);
 }
@@ -10,6 +10,11 @@ Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams)
 Player::~Player()
 {
 	delete target;
+}
+
+void Player::load(const LoaderParams* pParams)
+{
+	SDLGameObject::load(pParams);
 }
 
 void Player::draw()

@@ -2,7 +2,7 @@
 #include "InputHandler.h"
 
 //constructor for MenuButton, calls SDLGameObject constructor first with LoaderParams
-MenuButton::MenuButton(const LoaderParams* pParams, void(*callback)()) : SDLGameObject(pParams), m_callback(callback)
+MenuButton::MenuButton() : SDLGameObject()
 {
 	m_currentFrame = MOUSE_OUT;	//start at frame 0
 }
@@ -50,4 +50,11 @@ void MenuButton::update()
 void MenuButton::clean()
 {
 	SDLGameObject::clean();
+}
+
+void MenuButton::load(const LoaderParams* pParams)
+{
+	SDLGameObject::load(pParams);
+	m_callbackID = pParams->getCallbackID();
+	m_currentFrame = MOUSE_OUT;
 }

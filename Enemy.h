@@ -9,7 +9,7 @@ class Enemy: public SDLGameObject
 	void handleInput();
 public:
 
-	Enemy(const LoaderParams* pParams);
+	Enemy();
 
 	virtual void draw();
 	virtual void update();

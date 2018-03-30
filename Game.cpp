@@ -3,8 +3,9 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "InputHandler.h"
-#include "MenuState.h"
+#include "MainMenuState.h"
 #include "PlayState.h"
+#include "MenuButton.h"
 
 //definition for static instance 
 Game* Game::s_pInstance = 0;
@@ -64,14 +65,13 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 	}
 
 	//creating and pushing objects
-	m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, 6, "animate")));
-	m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 128, 82, 6, "animate")));
+	m_gameObjects.push_back(new Player());
+	m_gameObjects.push_back(new Enemy());
 
 	m_bRunning = true;	//everything inited successfully, start the main loop
 
 	//load MENU state 
-	m_pGameStateMachine = new GameStateMachine();
-	m_pGameStateMachine->changeState(new MenuState());
+	TheGameObjectFactory::instance()->registerType("MenuButton", new MenuButtonCreator());
 
 	return true;
 }

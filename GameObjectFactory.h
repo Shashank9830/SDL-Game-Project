@@ -40,4 +40,6 @@ public:
 	GameObject* create(std::string typeID);
 };
 
+typedef GameObjectFactory TheGameObjectFactory;
+
 #endif //defined!(__GameObjectFactory__)

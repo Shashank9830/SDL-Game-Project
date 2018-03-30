@@ -20,12 +20,13 @@ protected:
 	int m_currentRow;
 	int m_currentFrame;
 	int m_numFrames;
+	int m_callbackID;
 
 	std::string m_textureID;
 
 public:
 
-	SDLGameObject(const LoaderParams* pParams);
+	SDLGameObject();
 
 	virtual void draw();
 	virtual void update();
@@ -34,6 +35,8 @@ public:
 	Vector2D& getPosition() { return m_position; }
 	int getWidth() { return m_width; }
 	int getHeight() { return m_height; }
+
+	virtual void load(const LoaderParams* pParams);
 };
 
 #endif //defined(__SDLGameObject__)

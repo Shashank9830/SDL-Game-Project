@@ -1,6 +1,6 @@
 #include "GameOverState.h"
 #include "Game.h"
-#include "MenuState.h"
+#include "MainMenuState.h"
 #include "PlayState.h"
 #include "TextureManager.h"
 #include "AnimatedGraphic.h"
@@ -16,7 +16,7 @@ GameOverState::GameOverState()
 
 void GameOverState::s_gameOverToMain()
 {
-	TheGame::Instance()->getStateMachine()->changeState(new MenuState());
+	TheGame::Instance()->getStateMachine()->changeState(new MainMenuState());
 }
 
 void GameOverState::s_restartPlay()
@@ -55,9 +55,9 @@ bool GameOverState::onEnter()
 		return false;
 	}
 
-	GameObject* gameOverText = new AnimatedGraphic(new LoaderParams(200, 100, 190, 30, 3, "gameovertext"), 2);
-	GameObject* button1 = new MenuButton(new LoaderParams(200, 200, 200, 80, 3, "mainbutton"), s_gameOverToMain);
-	GameObject* button2 = new MenuButton(new LoaderParams(200, 300, 200, 80, 3, "restartbutton"), s_restartPlay);
+	GameObject* gameOverText = new AnimatedGraphic(new LoaderParams(200, 100, 190, 30, "gameovertext", 3), 2);
+	GameObject* button1 = new MenuButton(new LoaderParams(200, 200, 200, 80, "mainbutton", 3), s_gameOverToMain);
+	GameObject* button2 = new MenuButton(new LoaderParams(200, 300, 200, 80, "restartbutton", 3), s_restartPlay);
 
 	m_gameObjects.push_back(gameOverText);
 	m_gameObjects.push_back(button1);
